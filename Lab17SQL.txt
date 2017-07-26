@@ -1,0 +1,61 @@
+Ny Derry
+Lab17
+7/25/17
+
+SELECT * FROM customers;
+
+SELECT DISTINCT Country FROM customers;
+
+SELECT customerID FROM customers WHERE  customerID LIKE 'bl%';
+
+SELECT * FROM customers LIMIT 100;
+
+SELECT * FROM customers  WHERE PostalCode = 1010 OR PostalCode =3012 OR PostalCode =12209 OR PostalCode =05023;
+Another way
+SELECT * FROM customers where postalCode in (1010,12209,05023);
+
+SELECT * FROM customers WHERE Region IS NOT NULL;
+
+SELECT * FROM Customers ORDER BY Country, City;
+
+INSERT INTO Customers (CustomerID, CompanyName, Address, City, PostalCode, Country)
+VALUES ('CARDI', 'Shoe Store', '123 Main', 'Stavanger', '4006', 'Norway');
+
+
+UPDATE Customers SET Region = 'EuroZone' WHERE Country = 'France'; //restart to run
+
+DELETE FROM northwind.`order details` WHERE Quantity=1;
+
+SELECT AVG(Quantity) FROM northwind.`order details` WHERE Quantity IS NOT NULL; //condition is true for each number wants to calculate
+Another way
+SELECT avg(quantity) as average from 'order details';
+SELECT avg(quantity), max(quality), ordering from 'order details';
+Another way
+SELECT max(quantity) as maximum from 'order details';
+SELECT min(quantity) as minimum from 'order details';
+
+
+SELECT AVG(Quantity)
+FROM northwind.`order details`
+WHERE Quantity IS NOT NULL
+GROUP BY orderID
+ORDER BY Quantity;
+
+SELECT CustomerID, OrderId
+FROM northwind.orders
+WHERE OrderID LIKE 10290;
+
+SELECT *
+FROM northwind.orders
+INNER JOIN northwind.customers ON northwind.orders.CustomerID = northwind.customers.CustomerID;
+SELECT Customers.CutomerID FROM Customers LEFT JOIN orders ON Customers.CustomerID = orders;
+SELECT Customers.CutomerID FROM Customers RIGT JOIN orders ON Customers.CustomerID = orders;
+
+
+SELECT FirstName
+FROM northwind.employees
+WHERE ReportsTo IS NULL;
+
+SELECT FirstName
+FROM northwind.employees
+WHERE ReportsTo = 2;
